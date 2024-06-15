@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+class elevator {
+private:
+	int min_floor;
+	int max_floor;
+	
+public: elevator(int min, int max) { 
+	  min_floor = min;
+	  max_floor = max;
+}
+	  //функиция включащая лифт. Если лифт включен, то он работает
+	   bool lift_info(bool n) {
+		  if (n == 1) {
+			  cout << "elevator its works"<<endl;
+		  }
+		  else { return 0; }
+	  }
+	  int last_floor = 5; //текущее положение лифта
+	  //функция вызова лифта
+	  int set_elevator(int floor) {
+		  if (floor < last_floor) {
+			  for (int k = last_floor; k >= floor; k--) {
+				  cout << k << endl;
+			  }
+			  return last_floor=floor;
+		  }
+		  if (floor > last_floor) {
+			  for (int k = last_floor; k <= floor; k++) {
+				  cout << k << endl;
+			  }
+			  return last_floor = floor;
+		  }
+		  else {
+			  cout << floor << endl;
+			  return last_floor = floor;
+		  }
+		  
+	  }
+
+};
+
+int main() {
+	srand(time(NULL));
+	elevator home{ 1,10 };
+	home.lift_info(1);
+	home.set_elevator(2);
+	cout << endl;
+	home.set_elevator(6);
+	cout << endl;
+	home.set_elevator(10);
+	return 0;
+}
